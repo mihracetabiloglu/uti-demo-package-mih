@@ -15,7 +15,6 @@ class GrayExecutor(Component):
     def __init__(self, request, bootstrap):
         super().__init__(request, bootstrap)
         self.request.model = PackageModel(**(self.request.data))
-
         self.image = self.request.get_param("inputImageOne")
         self.method = self.request.get_param("demoDependentDropdown")
 
@@ -41,7 +40,7 @@ class GrayExecutor(Component):
 
         img.value = self.process(img.value)
 
-        self.image = Image.set_frame(img=img, package_uID=self.uID, redis_db=self.redis_db)
+        self.output_image_one = Image.set_frame(img=img, package_uID=self.uID, redis_db=self.redis_db)
 
         packageModel = build_response_gray(context=self)
         return packageModel
