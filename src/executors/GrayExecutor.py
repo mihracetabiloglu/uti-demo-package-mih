@@ -40,7 +40,7 @@ class GrayExecutor(Component):
 
         img.value = self.process(img.value)
 
-        self.output_image_one = Image.set_frame(img=img, package_uID=self.uID, redis_db=self.redis_db)
+        self.image = Image.set_frame(img=img, package_uID=self.uID, redis_db=self.redis_db)
 
         packageModel = build_response_gray(context=self)
         return packageModel
