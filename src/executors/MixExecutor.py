@@ -45,13 +45,14 @@ class MixExecutor(Component):
 
         img_one.value = result[0]
         self.output_image_one = Image.set_frame(img=img_one, package_uID=self.uID, redis_db=self.redis_db)
+        self.output_image_one.value = None  
 
         img_two.value = result[1]
         self.output_image_two = Image.set_frame(img=img_two, package_uID=self.uID, redis_db=self.redis_db)
+        self.output_image_two.value = None 
 
         packageModel = build_response_mix(self)
         return packageModel
-
 
 if "__main__" == __name__:
     Executor(sys.argv[1]).run()
