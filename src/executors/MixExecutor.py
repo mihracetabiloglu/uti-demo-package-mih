@@ -44,14 +44,12 @@ class MixExecutor(Component):
         blended, difference = self.process(img_one.value, img_two.value)
 
         img_one.value = blended
-        out1 = Image.set_frame(img=img_one, package_uID=self.uID, redis_db=self.redis_db)
-        out1.value = None
-        self.output_image_one = [out1]
+        self.image_one = Image.set_frame(img=img_one, package_uID=self.uID, redis_db=self.redis_db)
+        self.image_one.value = None
 
         img_two.value = difference
-        out2 = Image.set_frame(img=img_two, package_uID=self.uID, redis_db=self.redis_db)
-        out2.value = None
-        self.output_image_two = [out2]
+        self.image_two = Image.set_frame(img=img_two, package_uID=self.uID, redis_db=self.redis_db)
+        self.image_two.value = None
 
         packageModel = build_response_mix(self)
         return packageModel
